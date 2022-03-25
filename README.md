@@ -22,8 +22,9 @@ Given an interactive application When I enter my location Then I am presented wi
 .color4 {color: #fb0075;} 
 .color5 {color: #ff7f71;}
 
-*API's https://api.seatgeek.com
+*API's 
 
+https://api.seatgeek.com
 https://api.watchmode.com
 
 *Framework
