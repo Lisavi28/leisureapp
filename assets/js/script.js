@@ -9,4 +9,4 @@ function getSecApi() {
     var requestUrl = 'https://api.watchmode.com/v1/list-titles/?apiKey=yB2XQSNXcQqedX9cGIOyktWNkDzHlZK2tNoGyah0&genres=3&types=movie'
     fetch(requestUrl);
 }
-getSecApi();
+getSecApi(); 
