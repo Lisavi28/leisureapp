@@ -28,13 +28,22 @@ body {
 
 .hero {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f9fbfd;
+    background-color: black;
     font-size: 35px;
     padding: 20px 35px;
     padding-top: 0px;  
     font-size: 5.4rem;
     border-radius: 15px;
+    color:#ffff00;
+    flex-wrap: wrap;
 }   
+
+nav{
+  color: #f9fbfd;
+  background-color: transparent;
+  justify-content: space-between;
+ 
+}
 
 .flex-row {
   display: flex;
@@ -54,6 +63,7 @@ main {
 
 p {
     font-size: 1.5rem;
+    align-content: flex-start;
   }
 
 #p {
