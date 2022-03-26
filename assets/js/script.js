@@ -3,10 +3,15 @@ var cardEl2 = document.querySelector("#card-2");
 var cardEl3 = document.querySelector("#card-3");
 var cardEl4 = document.querySelector("#card-4");
 var eventCards = [cardEl1,cardEl2,cardEl3,cardEl4]
+var searchBtnEl = document.querySelector("#submit-form");
+var searchTextEl = document.querySelector(".city-input");
+var searchTypeEl = document.querySelector(".type-input");
 
-function getApi() {
+
+
+function displayevents(cityChosen,typeChosen) {
     // Insert the API 
-    var requestUrl = 'https://api.seatgeek.com/2/events?venue.city=nashville&client_id=MjYyMjgxOTR8MTY0Nzk4NDUyMS43MjMxMTM4';
+    var requestUrl = "https://api.seatgeek.com/2/events?venue.city="+ cityChosen +"&taxonomies.name=" + typeChosen + "&client_id=MjYyMjgxOTR8MTY0Nzk4NDUyMS43MjMxMTM4";
     fetch(requestUrl)
     .then(function (response) {
         return response.json();
@@ -41,10 +46,27 @@ eventCards[i].append(performer,picCont,venue,date,address,city)
 }
     })
 }
-getApi()
 
+var eventSubmit = function(event) {
+    event.preventDefault();
+    var cityChosen = searchTextEl.value.trim();
+    var typeChosen = searchTypeEl.value.trim();
+  displayevents(cityChosen,typeChosen);
 
+    searchTextEl.textContent = "";
+    cardEl1.textContent = ""; 
+    cardEl2.textContent = ""; 
+    cardEl3.textContent = ""; 
+    cardEl4.textContent = ""; 
+  
+  }
+  searchBtnEl.addEventListener("submit", eventSubmit);
 
+ /* function gettaxApi() {
+    // Insert the API url
+    var requestUrl = 'https://api.seatgeek.com/2/taxonomies?&client_id=MjYyMjgxOTR8MTY0Nzk4NDUyMS43MjMxMTM4'
+    fetch(requestUrl);
+}*/
 
 
 
