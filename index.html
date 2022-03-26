@@ -16,9 +16,9 @@
 <header class="hero"> 
   <nav class="nav row"> 
         <h1 class="col s3">Leisure <span style="color:#9bf46b">App</span></h1>   
-            <ul class=" right hide-on-med-and-down">
-            <li><a class="event-btn"><i class="medium material-icons right">local_activity</i>Events</a></li>
-            <li><a class="movie-btn"><i class="medium material-icons right">local_movies</i>Movies</a></li>
+            <ul class=" right hide-on-med-and-down" id="click-btn" >
+            <li><button class="event-btn" id="events" ><i class="medium material-icons right">local_activity</i>Events</button></li>
+            <li><button class="movie-btn" id="movies"><i class="medium material-icons right">local_movies</i>Movies</button></li>
             </ul>   
   </nav>
 
@@ -27,7 +27,7 @@
     
 
 <main class="row">
-    <div class="col s3">
+    <div class="events">
         <div class="card">
             <form class="card-content white-text" id= "submit-form">
                 <h3 class="search">Events for city</h3>
@@ -40,20 +40,43 @@
                       <option value="comedy">Comedy</option>
                       <option value="concert">Concerts</option>
                     </select>
-                <!--<input name="type-Input" type="text" autofocus="true" class="type-input" />-->
                 <button type="submit" class="btn" id="submit">Search</button>  
             </form>
         </div>
     </div>
             
-        <div clas="col s7">
+        <div class="events">
             <h5 class="center"><span style=" color: #ffff00">Know the events of the season, 
                 </br>your free time has never been so much fun,  </br>
            with a single click you will know where to go. </span></h5>
            
         </div>
         
-    
+        <div class="movies hidden">
+            <div class="card">
+                <form class="card-content white-text" id= "submit-form">
+                    <h3 class="search">Movies</h3>
+                     <input name="city-input" id="type-event" type="text" autofocus="true" class="city-input"/>
+                    <h3 class="type">Category</h3>
+                        <select name="task-type" class="select-dropdown type-input">
+                          <option value="" selected disabled>Pick a task type</option>
+                          <option value="theater">Theater</option>
+                          <option value="sports">Sports</option>
+                          <option value="comedy">Comedy</option>
+                          <option value="concert">Concerts</option>
+                        </select>
+                    <button type="submit" class="btn" id="submit">Search</button>  
+                </form>
+            </div>
+        </div>
+                
+            <div class="movies hidden">
+                <h5 class="center"><span style=" color: #ffff00">Know the events of the season, 
+                    </br>your free time has never been so much fun,  </br>
+               with a single click you will know where to go. </span></h5>
+               
+            </div>
+        
     </main>   
     
     <section class="row weekly-events">

@@ -6,6 +6,8 @@ var eventCards = [cardEl1,cardEl2,cardEl3,cardEl4]
 var searchBtnEl = document.querySelector("#submit-form");
 var searchTextEl = document.querySelector(".city-input");
 var searchTypeEl = document.querySelector(".type-input");
+var switchBtnEl =document.querySelector ("#click-btn");
+
 
 
 
@@ -60,7 +62,19 @@ var eventSubmit = function(event) {
     cardEl4.textContent = ""; 
   
   }
+
+  var switchf = function(event) {
+  var eventType = event.target.getAttribute("class");
+    if (eventType === "movie-btn") {
+        
+    }
+  }
+
+
   searchBtnEl.addEventListener("submit", eventSubmit);
+
+  switchBtnEl.addEventListener("click", switchf);
+
 
  /* function gettaxApi() {
     // Insert the API url
