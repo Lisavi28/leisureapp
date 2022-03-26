@@ -51,10 +51,10 @@ nav{
   flex-wrap: wrap;
   flex-direction: row;
   padding-bottom: 20px;
-  margin: 0 auto 35px auto;
-  width: 50%;
+  margin: 0 auto;
+  width: 100%;
   border: 2px  solid ;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 main {
@@ -78,11 +78,18 @@ p {
        color: #b10084;
       justify-content: center;
   }
+  h4 {
+    font-size: 16px;
+  }
 
   h2 {
     font-size: 50px;
     color: #f9fbfd;
     justify-content: center;
+  }
+
+  .cards h3 {
+    color: #f9fbfd;
   }
 
   .h1 {
@@ -120,7 +127,21 @@ p {
     box-shadow: 3px 3px black;
   }
 
+  .cards{
+    display: inline;
+    position: relative;
+    background-color: black;
+    border-radius: 15px;
+    opacity: 5px;
+    color: #b10084;
+    justify-content: center;
+   width: 20%;
+    box-shadow: 3px 3px black;
+    margin: 0;
+    text-align: center;
+  }
   .center {
     font-size: 50px;
     justify-content: center;
   }
+  
