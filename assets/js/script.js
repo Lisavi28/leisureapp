@@ -7,8 +7,11 @@ var searchBtnEl = document.querySelector("#submit-form");
 var searchTextEl = document.querySelector(".city-input");
 var searchTypeEl = document.querySelector(".type-input");
 var switchBtnEl =document.querySelector ("#click-btn");
-
-
+var eventContEl =document.querySelector (".events");
+var movieContEl =document.querySelector (".movies");
+var movieTextContEl =document.querySelector (".moviestype");
+var eventTextContEl =document.querySelector (".events-desc");
+var bodyContEl =document.querySelector ("#body");
 
 
 function displayevents(cityChosen,typeChosen) {
@@ -66,7 +69,19 @@ var eventSubmit = function(event) {
   var switchf = function(event) {
   var eventType = event.target.getAttribute("class");
     if (eventType === "movie-btn") {
-        
+eventContEl.classList.add("hidden")
+movieContEl.classList.remove("hidden")
+eventTextContEl.classList.add("hidden")
+movieTextContEl.classList.remove("hidden")
+bodyContEl.classList.add("moviealt")
+    }
+
+    if (eventType === "event-btn") {
+        eventContEl.classList.remove("hidden")
+        movieContEl.classList.add("hidden")
+        eventTextContEl.classList.remove("hidden")
+        movieTextContEl.classList.add("hidden")
+        bodyContEl.classList.remove("moviealt")
     }
   }
 
@@ -74,6 +89,7 @@ var eventSubmit = function(event) {
   searchBtnEl.addEventListener("submit", eventSubmit);
 
   switchBtnEl.addEventListener("click", switchf);
+
 
 
  /* function gettaxApi() {
@@ -91,3 +107,4 @@ function getSecApi() {
     var requestUrl = 'https://api.watchmode.com/v1/list-titles/?apiKey=yB2XQSNXcQqedX9cGIOyktWNkDzHlZK2tNoGyah0&genres=3&types=movie'
     fetch(requestUrl);
 }
+

@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">-->
     <link rel="stylesheet" href="./assets/css/style.css"/> 
     <title>Leisure app</title>
 </head>
-<body>
+
+<body id="body">
     
 <header class="hero"> 
   <nav class="nav row"> 
@@ -45,7 +45,7 @@
         </div>
     </div>
             
-        <div class="events">
+        <div class="events-desc">
             <h5 class="center"><span style=" color: #ffff00">Know the events of the season, 
                 </br>your free time has never been so much fun,  </br>
            with a single click you will know where to go. </span></h5>
@@ -60,19 +60,19 @@
                     <h3 class="type">Category</h3>
                         <select name="task-type" class="select-dropdown type-input">
                           <option value="" selected disabled>Pick a task type</option>
-                          <option value="theater">Theater</option>
-                          <option value="sports">Sports</option>
-                          <option value="comedy">Comedy</option>
-                          <option value="concert">Concerts</option>
+                          <option value="1">Action</option>
+                          <option value="2">Adult</option>
+                          <option value="3">Adventure</option>
+                          <option value="4">Comedy</option>
                         </select>
                     <button type="submit" class="btn" id="submit">Search</button>  
                 </form>
             </div>
         </div>
                 
-            <div class="movies hidden">
-                <h5 class="center"><span style=" color: #ffff00">Know the events of the season, 
-                    </br>your free time has never been so much fun,  </br>
+            <div class="moviestype hidden">
+                <h5 class="center"><span style=" color: #ffff00">Enjoy the movies
+                    </br>your favorite movie  </br>
                with a single click you will know where to go. </span></h5>
                
             </div>
