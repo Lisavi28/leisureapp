@@ -15,6 +15,7 @@ var searchMovEl = document.querySelector("#movie-form");//Id for the complete fo
 var searchmovieEl = document.querySelector(".movie-input");//Id to get text input (movie)
 var movieTypeEl = document.querySelector(".movietype-input");//Id to get text input (type)
 
+
 function displayevents(cityChosen,typeChosen) {
     // Insert the API 
     var requestUrl = "https://api.seatgeek.com/2/events?venue.city="+ cityChosen +"&taxonomies.name=" + typeChosen + "&client_id=MjYyMjgxOTR8MTY0Nzk4NDUyMS43MjMxMTM4";
@@ -23,7 +24,13 @@ function displayevents(cityChosen,typeChosen) {
         return response.json();
     })
     .then(function(data) {
-        for ( var i = 0; i < 23; i++) {
+
+      showEvents(data) 
+
+    } )}
+
+    var showEvents = function (data) {
+        for ( var i = 0; i < 15; i++) {
         var cityEvent = data.events[i].venue.city;
         var venueEvent = data.events[i].venue.name;
         var dateEvent = data.events[i].datetime_utc;
@@ -55,8 +62,8 @@ cardEl.append(performer,picCont,venue,date,address,city)
 
 cardsContEl.append(cardEl)
 }
-    })
-}
+    }
+
 
 var eventSubmit = function(event) {
     event.preventDefault();
@@ -66,6 +73,8 @@ var eventSubmit = function(event) {
 
     searchTextEl.textContent = "";
     cardsContEl.textContent = ""; 
+ 
+  
   }
 
   var switchf = function(event) {
@@ -97,29 +106,38 @@ bodyContEl.classList.add("moviealt")
     searchTextEl.textContent = "";
     cardsContEl.textContent = ""; 
   }
+
                                          
 function getSecApi(typemChosen) {
     // Insert the API url
-    var requestUrl = "https://api.watchmode.com/v1/list-titles/?apiKey=yB2XQSNXcQqedX9cGIOyktWNkDzHlZK2tNoGyah0&genres=" +typemChosen + "&types=movie";
+    var requestUrl = "https://api.watchmode.com/v1/list-titles/?apiKey=xMnzhPs9IXbgnVUA9SFnP4fIVgZyYQk8fGbF6zid&genres=" +typemChosen + "&types=movie";
 fetch(requestUrl)
 .then(function (response) {
     return response.json();
 })  
 
 .then(function(data) {
-        for ( var i = 0; i < 23; i++) {
-        var movieId= data.titles[i].id;
-     //   console.log(typemChosen)
-       // console.log(movieName,movieId)
-
-displayMovieResult(movieId,i); //call to the display function
+  generateIds(data)
 }
-    })
+    )
 }
 
-function displayMovieResult(movieId,i) {
+var generateIds = function(data) {
+for ( var i = 0; i < 5; i++) {
+
+  var value = Math.floor(Math.random() * 150);
+var movieId= data.titles[value].id;
+// console.log(movieName,movieId)
+
+displayMovieResult(movieId); //call to the display function
+}
+}
+
+
+
+function displayMovieResult(movieId) {
   // Insert the second API 
-  var requestUrl = "https://api.watchmode.com/v1/title/" + movieId +"/details/?apiKey=yB2XQSNXcQqedX9cGIOyktWNkDzHlZK2tNoGyah0&append_to_response=sources";
+  var requestUrl = "https://api.watchmode.com/v1/title/" + movieId +"/details/?apiKey=xMnzhPs9IXbgnVUA9SFnP4fIVgZyYQk8fGbF6zid";
   fetch(requestUrl)
   .then(function (response) {
       return response.json();
@@ -140,6 +158,7 @@ function displayMovieResult(movieId,i) {
   
       cardEl.classList.add("cards")
     
+
       poster.src =moviePoster;
       title.textContent = movieTitle;
       year.textContent = movieYear;
@@ -149,6 +168,7 @@ function displayMovieResult(movieId,i) {
       cardsContEl.append(cardEl)
       
 cardEl.append(poster,title,year,time,plot) 
+
   })
 }
 //calls getMovValue funcion 
