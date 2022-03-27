@@ -3,15 +3,24 @@ var cardEl2 = document.querySelector("#card-2");
 var cardEl3 = document.querySelector("#card-3");
 var cardEl4 = document.querySelector("#card-4");
 var eventCards = [cardEl1,cardEl2,cardEl3,cardEl4]
-var searchBtnEl = document.querySelector("#submit-form");
-var searchTextEl = document.querySelector(".city-input");
-var searchTypeEl = document.querySelector(".type-input");
-var switchBtnEl =document.querySelector ("#click-btn");
-var eventContEl =document.querySelector (".events");
-var movieContEl =document.querySelector (".movies");
-var movieTextContEl =document.querySelector (".moviestype");
-var eventTextContEl =document.querySelector (".events-desc");
-var bodyContEl =document.querySelector ("#body");
+//JS variables for first api
+var searchBtnEl = document.querySelector("#submit-form");// Id for the complete form
+var searchTextEl = document.querySelector(".city-input");//to get text input (city)
+var searchTypeEl = document.querySelector(".type-input");//to get text input (type)
+//JS variables for swithing content
+var switchBtnEl =document.querySelector ("#click-btn"); //header button
+var eventContEl =document.querySelector (".events"); //to hide class elements
+var movieContEl =document.querySelector (".movies"); //to hide divs
+var movieTextContEl =document.querySelector (".moviestype"); //to show movies text class
+var eventTextContEl =document.querySelector (".events-desc");// to show events content
+var bodyContEl =document.querySelector ("#body"); // to switch background
+//JS variables for second api
+var searchMovEl = document.querySelector("#movie-form");//Id for the complete form
+var searchmovieEl = document.querySelector(".movie-input");//Id to get text input (movie)
+var movieTypeEl = document.querySelector(".movietype-input");//Id to get text input (type)
+
+//var movieName = [];
+//var movieId = [];
 
 
 function displayevents(cityChosen,typeChosen) {
@@ -84,27 +93,76 @@ bodyContEl.classList.add("moviealt")
         bodyContEl.classList.remove("moviealt")
     }
   }
+//get text values from buttons
+  var getMovValue = function(event) {
+    event.preventDefault();
+    var movieChosen = searchmovieEl.value.trim();
+    var typemChosen = movieTypeEl.value.trim();
+    //console.log(typemChosen,movieChosen)
+  getSecApi(typemChosen);
 
+    searchTextEl.textContent = "";
+    cardEl1.textContent = ""; 
+    cardEl2.textContent = ""; 
+    cardEl3.textContent = ""; 
+    cardEl4.textContent = ""; 
+  
+  }
 
-  searchBtnEl.addEventListener("submit", eventSubmit);
-
-  switchBtnEl.addEventListener("click", switchf);
-
-
-
- /* function gettaxApi() {
+                                         
+function getSecApi(typemChosen) {
     // Insert the API url
-    var requestUrl = 'https://api.seatgeek.com/2/taxonomies?&client_id=MjYyMjgxOTR8MTY0Nzk4NDUyMS43MjMxMTM4'
-    fetch(requestUrl);
-}*/
+    var requestUrl = "https://api.watchmode.com/v1/list-titles/?apiKey=yB2XQSNXcQqedX9cGIOyktWNkDzHlZK2tNoGyah0&genres=" +typemChosen + "&types=movie";
+fetch(requestUrl)
+.then(function (response) {
+    return response.json();
+})  
 
+.then(function(data) {
+        for ( var i = 0; i < 7; i++) {
+        var movieId= data.titles[i].id;
+     //   console.log(typemChosen)
+       // console.log(movieName,movieId)
 
-
-
-
-function getSecApi() {
-    // Insert the API url
-    var requestUrl = 'https://api.watchmode.com/v1/list-titles/?apiKey=yB2XQSNXcQqedX9cGIOyktWNkDzHlZK2tNoGyah0&genres=3&types=movie'
-    fetch(requestUrl);
+displayMovieResult(movieId,i); //call to the display function
+}
+    })
 }
 
+
+function displayMovieResult(movieId,i) {
+  // Insert the second API 
+  var requestUrl = "https://api.watchmode.com/v1/title/" + movieId +"/details/?apiKey=yB2XQSNXcQqedX9cGIOyktWNkDzHlZK2tNoGyah0&append_to_response=sources";
+  fetch(requestUrl)
+  .then(function (response) {
+      return response.json();
+  })
+  .then(function(data) {
+    var moviePoster = data.poster;
+      var movieYear = data.year;
+      var movieTitle = data.title;
+      var movieRunTime = data.runtime_minutes;
+      var moviePlot = data.plot_overview;
+
+      var title = document.createElement("h3");
+      var year = document.createElement("h4");
+      var time = document.createElement("h4");
+      var plot = document.createElement("h4");
+      var poster = document.createElement("img");
+
+      poster.src =moviePoster;
+      title.textContent = movieTitle;
+      year.textContent = movieYear;
+      time.textContent = movieRunTime;
+      plot.textContent = moviePlot;
+
+eventCards[i].append(poster,title,year,time,plot) 
+
+  })
+}
+//calls getMovValue funcion 
+searchMovEl.addEventListener("submit", getMovValue);
+//calls eventSubmit function
+searchBtnEl.addEventListener("submit", eventSubmit);
+//switches between movies/events app
+switchBtnEl.addEventListener("click", switchf);
