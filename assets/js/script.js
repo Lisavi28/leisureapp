@@ -1,8 +1,4 @@
-var cardEl1 = document.querySelector("#card-1");
-var cardEl2 = document.querySelector("#card-2");
-var cardEl3 = document.querySelector("#card-3");
-var cardEl4 = document.querySelector("#card-4");
-var eventCards = [cardEl1,cardEl2,cardEl3,cardEl4]
+var cardsContEl = document.querySelector("#cards-cont");
 //JS variables for first api
 var searchBtnEl = document.querySelector("#submit-form");// Id for the complete form
 var searchTextEl = document.querySelector(".city-input");//to get text input (city)
@@ -19,10 +15,6 @@ var searchMovEl = document.querySelector("#movie-form");//Id for the complete fo
 var searchmovieEl = document.querySelector(".movie-input");//Id to get text input (movie)
 var movieTypeEl = document.querySelector(".movietype-input");//Id to get text input (type)
 
-//var movieName = [];
-//var movieId = [];
-
-
 function displayevents(cityChosen,typeChosen) {
     // Insert the API 
     var requestUrl = "https://api.seatgeek.com/2/events?venue.city="+ cityChosen +"&taxonomies.name=" + typeChosen + "&client_id=MjYyMjgxOTR8MTY0Nzk4NDUyMS43MjMxMTM4";
@@ -31,7 +23,7 @@ function displayevents(cityChosen,typeChosen) {
         return response.json();
     })
     .then(function(data) {
-        for ( var i = 0; i < 4; i++) {
+        for ( var i = 0; i < 23; i++) {
         var cityEvent = data.events[i].venue.city;
         var venueEvent = data.events[i].venue.name;
         var dateEvent = data.events[i].datetime_utc;
@@ -47,6 +39,9 @@ function displayevents(cityChosen,typeChosen) {
   var performer = document.createElement("h3");
   var picture = document.createElement("img");
   var picCont = document.createElement("a");
+  var cardEl = document.createElement("div");
+  
+  cardEl.classList.add("cards")
   picCont.href = linkEvent;
 venue.textContent = venueEvent;
 date.textContent = dateEvent;
@@ -54,9 +49,11 @@ address.textContent = addressEvent;
 picture.src = picEvent;
 city.textContent = cityEvent;
 performer.textContent = performEvent;
-
 picCont.append(picture)
-eventCards[i].append(performer,picCont,venue,date,address,city)
+
+cardEl.append(performer,picCont,venue,date,address,city)
+
+cardsContEl.append(cardEl)
 }
     })
 }
@@ -68,11 +65,7 @@ var eventSubmit = function(event) {
   displayevents(cityChosen,typeChosen);
 
     searchTextEl.textContent = "";
-    cardEl1.textContent = ""; 
-    cardEl2.textContent = ""; 
-    cardEl3.textContent = ""; 
-    cardEl4.textContent = ""; 
-  
+    cardsContEl.textContent = ""; 
   }
 
   var switchf = function(event) {
@@ -102,13 +95,8 @@ bodyContEl.classList.add("moviealt")
   getSecApi(typemChosen);
 
     searchTextEl.textContent = "";
-    cardEl1.textContent = ""; 
-    cardEl2.textContent = ""; 
-    cardEl3.textContent = ""; 
-    cardEl4.textContent = ""; 
-  
+    cardsContEl.textContent = ""; 
   }
-
                                          
 function getSecApi(typemChosen) {
     // Insert the API url
@@ -119,7 +107,7 @@ fetch(requestUrl)
 })  
 
 .then(function(data) {
-        for ( var i = 0; i < 7; i++) {
+        for ( var i = 0; i < 23; i++) {
         var movieId= data.titles[i].id;
      //   console.log(typemChosen)
        // console.log(movieName,movieId)
@@ -128,7 +116,6 @@ displayMovieResult(movieId,i); //call to the display function
 }
     })
 }
-
 
 function displayMovieResult(movieId,i) {
   // Insert the second API 
@@ -149,15 +136,19 @@ function displayMovieResult(movieId,i) {
       var time = document.createElement("h4");
       var plot = document.createElement("h4");
       var poster = document.createElement("img");
-
+      var cardEl = document.createElement("div");
+  
+      cardEl.classList.add("cards")
+    
       poster.src =moviePoster;
       title.textContent = movieTitle;
       year.textContent = movieYear;
       time.textContent = movieRunTime;
       plot.textContent = moviePlot;
-
-eventCards[i].append(poster,title,year,time,plot) 
-
+     
+      cardsContEl.append(cardEl)
+      
+cardEl.append(poster,title,year,time,plot) 
   })
 }
 //calls getMovValue funcion 
