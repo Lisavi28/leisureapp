@@ -13,22 +13,28 @@
 
 <body id="body">
     
-<header class="hero"> 
-  <nav class="nav row"> 
-        <h1 class="col s3">Leisure <span style="color:#9bf46b">App</span></h1>   
-            <ul class=" right hide-on-med-and-down" id="click-btn" >
-            <li><button class="event-btn" id="events" ><i class="medium material-icons right">local_activity</i>Events</button></li>
-            <li><button class="movie-btn" id="movies"><i class="medium material-icons right">local_movies</i>Movies</button></li>
-            </ul>   
+<header class="header-nav"> 
+  <nav class="nav-row"> 
+    
+        <h1 class="logo">Leisure <span style="color:#9bf46b">App</span>
+        </h1>  
+  
+        <ul class="btn-header" id="click-btn" >
+            <li>
+                <button class="event-btn switch-btn" id="events" ><i class="medium material-icons right">local_activity</i>Events</button>
+            </li>
+            <li>
+                <button class="movie-btn switch-btn" id="movies"><i class="medium material-icons right">local_movies</i>Movies</button>
+            </li>
+        </ul>   
   </nav>
 
-        <p class="col s3"><span style=" color:#ff7f71">Enjoy your free time!</span></p>
+        <p class="subtitle"><span style=" color:#ff7f71">Enjoy your free time!</span></p>
     </header>
     
 
-<main class="row">
-    <div class="events">
-        <div class="card">
+<main class="main">
+    <div class="events form-container">
             <form class="card-content white-text" id= "submit-form">
                 <h3 class="search">Events for city</h3>
                  <input name="city-input" id="type-event" type="text" autofocus="true" class="city-input"/>
@@ -42,7 +48,6 @@
                     </select>
                 <button type="submit" class="btn" id="submit">Search</button>  
             </form>
-        </div>
     </div>
             
         <div class="events-desc">
@@ -52,8 +57,7 @@
            
         </div>
         
-        <div class="movies hidden">
-            <div class="card">
+        <div class="movies hidden form-container">
                 <form class="card-content white-text" id= "movie-form">
                     <h3 class="search">Movies</h3>
                      <input name="movie-input" id="type-movie" type="text" autofocus="true" class="movie-input"/>
@@ -67,7 +71,6 @@
                         </select>
                     <button type="submit" class="btn" id="submit">Search</button>  
                 </form>
-            </div>
         </div>
                 
             <div class="moviestype hidden">
