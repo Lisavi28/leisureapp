@@ -62,15 +62,27 @@
         
         <div class="movies hidden form-container">
                 <form class="card-content white-text" id= "movie-form">
-                    <h3 class="search">Movies</h3>
-                     <input name="movie-input" placeholder="" id="type-movie" type="text" autofocus="true" class="movie-input"/>
+                    <h3 class="search">Watch Movies or Tv Series</h3>
+                    <select name="movie-type" class="select-dropdown movie-input">
+                        <option value="" selected disabled>Pick a content</option>
+                        <option value="movie">Movie</option>
+                        <option value="tv_series">Tv Series</option>
+                    </select>
                     <h3 class="type">Category</h3>
-                        <select name="task-type" class="select-dropdown movietype-input">
+                        <select name="movies-type" class="select-dropdown movietype-input">
                           <option value="" selected disabled>Pick a movie genre</option>
                           <option value="1">Action</option>
-                          <option value="2">Adult</option>
+                          <option value="33">Anime</option>
                           <option value="3">Adventure</option>
                           <option value="4">Comedy</option>
+                          <option value="5">Crime</option>
+                          <option value="6">Documentary</option>
+                          <option value="7">Drama</option>
+                          <option value="8">Family</option>
+                          <option value="11">Horror</option>
+                          <option value="21">Kids</option>
+                          <option value="14">Romance</option>
+                          <option value="40">Fantasy and Sci-Fi</option>
                         </select>
                     <button type="submit" class="btn" id="submit">Search</button>  
                 </form>
@@ -83,10 +95,12 @@
 <!--section events and movies hidden-->
 
     <section class="row weekly-events">
-            <h2 class = "col s 12" id="subtitle">Weekly events</h2>
+            <h2 class = "recommend hidden" id="ev-subtitle">Weekly events</h2>
+            <h2 class = "recommend hidden" id="mov-subtitle">Our Recommendations</h2>
             <div class ="flex-row event-cards" id = "cards-cont">
             </div>
     </section>
+
    
 
   

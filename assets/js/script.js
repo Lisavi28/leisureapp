@@ -12,8 +12,12 @@ var eventTextContEl =document.querySelector (".events-desc");// to show events c
 var bodyContEl =document.querySelector ("#body"); // to switch background
 //JS variables for second api
 var searchMovEl = document.querySelector("#movie-form");//Id for the complete form
-var searchmovieEl = document.querySelector(".movie-input");//Id to get text input (movie)
+var searchContentEl = document.querySelector(".movie-input");//Id to get text input (movie)
 var movieTypeEl = document.querySelector(".movietype-input");//Id to get text input (type)
+//JS header for recommendations
+var featuredmovEl = document.querySelector("#mov-subtitle");//Id to get text input (type)
+var featuredevEl = document.querySelector("#ev-subtitle");//Id to get text input (type)
+
 
 
 function displayevents(cityChosen,typeChosen) {
@@ -47,6 +51,9 @@ function displayevents(cityChosen,typeChosen) {
   var picture = document.createElement("img");
   var picCont = document.createElement("a");
   var cardEl = document.createElement("div");
+  featuredmovEl.classList.add("hidden")
+
+featuredevEl.classList.remove("hidden")
   
   cardEl.classList.add("cards")
   picCont.href = linkEvent;
@@ -70,8 +77,9 @@ var eventSubmit = function(event) {
     var cityChosen = searchTextEl.value.trim();
     var typeChosen = searchTypeEl.value.trim();
   displayevents(cityChosen,typeChosen);
-
-    searchTextEl.textContent = "";
+  /*;*/
+  document.querySelector("select[name='task-type']").selectedIndex = 0;
+    searchTextEl.value = "";
     cardsContEl.textContent = ""; 
  
   
@@ -85,6 +93,10 @@ movieContEl.classList.remove("hidden")
 eventTextContEl.classList.add("hidden")
 movieTextContEl.classList.remove("hidden")
 bodyContEl.classList.add("moviealt")
+featuredevEl.classList.add("hidden")
+cardsContEl.textContent = ""; 
+
+
     }
 
     if (eventType === "event-btn") {
@@ -93,24 +105,29 @@ bodyContEl.classList.add("moviealt")
         eventTextContEl.classList.remove("hidden")
         movieTextContEl.classList.add("hidden")
         bodyContEl.classList.remove("moviealt")
+featuredmovEl.classList.add("hidden")
+cardsContEl.textContent = ""; 
+
+
     }
   }
 //get text values from buttons
   var getMovValue = function(event) {
     event.preventDefault();
-    var movieChosen = searchmovieEl.value.trim();
+    var movieChosen = searchContentEl.value.trim();
     var typemChosen = movieTypeEl.value.trim();
     //console.log(typemChosen,movieChosen)
-  getSecApi(typemChosen);
-
-    searchTextEl.textContent = "";
+  getSecApi(typemChosen,movieChosen);
+ 
+  document.querySelector("select[name='movie-type']").selectedIndex = 0;
+  document.querySelector("select[name='movies-type']").selectedIndex = 0;
     cardsContEl.textContent = ""; 
   }
 
                                          
-function getSecApi(typemChosen) {
+function getSecApi(typemChosen,movieChosen) {
     // Insert the API url
-    var requestUrl = "https://api.watchmode.com/v1/list-titles/?apiKey=xMnzhPs9IXbgnVUA9SFnP4fIVgZyYQk8fGbF6zid&genres=" +typemChosen + "&types=movie";
+    var requestUrl = "https://api.watchmode.com/v1/list-titles/?apiKey=xMnzhPs9IXbgnVUA9SFnP4fIVgZyYQk8fGbF6zid&genres=" +typemChosen + "&types=" + movieChosen;
 fetch(requestUrl)
 .then(function (response) {
     return response.json();
@@ -123,7 +140,7 @@ fetch(requestUrl)
 }
 
 var generateIds = function(data) {
-for ( var i = 0; i < 5; i++) {
+for ( var i = 0; i < 2; i++) {
 
   var value = Math.floor(Math.random() * 150);
 var movieId= data.titles[value].id;
@@ -133,7 +150,7 @@ displayMovieResult(movieId); //call to the display function
 }
 }
 
-
+//Displays movies results with ID from getSec Api()
 
 function displayMovieResult(movieId) {
   // Insert the second API 
@@ -157,12 +174,13 @@ function displayMovieResult(movieId) {
       var cardEl = document.createElement("div");
   
       cardEl.classList.add("cards")
-    
+      featuredevEl.classList.add("hidden")
+    featuredmovEl.classList.remove("hidden")
 
       poster.src =moviePoster;
       title.textContent = movieTitle;
       year.textContent = movieYear;
-      time.textContent = movieRunTime;
+      time.textContent = "Run Time: " + movieRunTime + "minutes";
       plot.textContent = moviePlot;
      
       cardsContEl.append(cardEl)

@@ -149,6 +149,7 @@ p {
     width: 80%;
     margin: 120px auto;
     color: black;
+    text-shadow: 5px white;
     
   }
  
@@ -157,7 +158,8 @@ p {
 h2 {
     font-size: 50px;
     color: #f9fbfd;
-    text-align: space-around;   
+    text-align: space-around;  
+    margin-left: 10%; 
   }
 
 .flex-row {
@@ -202,6 +204,7 @@ h2 {
   .hidden {
     display:none;
   }
+
 
  
  /*
