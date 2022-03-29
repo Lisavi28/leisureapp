@@ -11,6 +11,7 @@
     <title>Leisure app</title>
 </head>
 
+<!--body and header starts -->
 <body id="body">
     
 <header class="header-nav"> 
@@ -30,17 +31,18 @@
   </nav>
 
         <p class="subtitle"><span style=" color:#ff7f71">Enjoy your free time!</span></p>
-    </header>
+</header>
     
+<!--starts main and form-container-->
 
 <main class="main">
     <div class="events form-container">
             <form class="card-content white-text" id= "submit-form">
-                <h3 class="search">Events for city</h3>
-                 <input name="city-input" id="type-event" type="text" autofocus="true" class="city-input"/>
+                <h3 for="city">Events for city</h3>
+                 <input name="city-input" placeholder= "City" id="type-event" type="text" autofocus="true" class="city-input"/>
                 <h3 class="type">Category</h3>
                     <select name="task-type" class="select-dropdown type-input">
-                      <option value="" selected disabled>Pick a task type</option>
+                      <option value="" selected disabled>Choose an event category</option>
                       <option value="theater">Theater</option>
                       <option value="sports">Sports</option>
                       <option value="comedy">Comedy</option>
@@ -51,16 +53,17 @@
     </div>
             
         <div class="events-desc">
-            <h5 class="center"><span style=" color: #ffff00">Know the events of the season, 
-                </br>your free time has never been so much fun,  </br>
-           with a single click you will know where to go. </span></h5>
+            <h5 class="center">Know the events of the season, your free time has never been
+             so much fun, with a single click you will know where to go.</h5>
            
         </div>
+
+<!--second part movies hidden-->
         
         <div class="movies hidden form-container">
                 <form class="card-content white-text" id= "movie-form">
                     <h3 class="search">Movies</h3>
-                     <input name="movie-input" id="type-movie" type="text" autofocus="true" class="movie-input"/>
+                     <input name="movie-input" placeholder="" id="type-movie" type="text" autofocus="true" class="movie-input"/>
                     <h3 class="type">Category</h3>
                         <select name="task-type" class="select-dropdown movietype-input">
                           <option value="" selected disabled>Pick a movie genre</option>
@@ -74,19 +77,16 @@
         </div>
                 
             <div class="moviestype hidden">
-                <h5 class="center"><span style=" color: #ffff00">Enjoy the movies
-                    </br>your favorite movie  </br>
-               with a single click you will know where to go. </span></h5>
-               
+                <h5 class="center">Enjoy the best movies in the comfort of your home, take out the popcorn and enjoy your favorite movie.</h5>  
             </div>
-        
-    </main>   
-    
+</main>   
+<!--section events and movies hidden-->
+
     <section class="row weekly-events">
             <h2 class = "col s 12" id="subtitle">Weekly events</h2>
             <div class ="flex-row event-cards" id = "cards-cont">
             </div>
-        </section>
+    </section>
    
 
   
