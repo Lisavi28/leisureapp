@@ -1,12 +1,9 @@
 :root {
     --primary:  #9bf46b;
     --secondary: black;
-    --terciary: #7f87f1;
-    --fourth: #b10084;
-    --fiveth: #fb0075;
-    --sixth:#ff7f71;
-    --seventh: #f9fbfd ;
-    --eighth:#ffff00;
+    --thirdth: #fb0075;
+    --fourth:#ff7f71;
+    --fifth: #f9fbfd ;
 }
 
 * {
@@ -34,7 +31,7 @@ body {
     background-color: var(--secondary);
     padding: 20px 35px;  
     border-radius: 5px;
-    color: #f9fbfd;
+    color: var(--fifth);
     display: flex;
     flex-direction: column;
     justify-content: space-between;     
@@ -58,7 +55,7 @@ p {
     justify-content: space-between;
     align-items: center;
     list-style: none;
-    width: 15%;
+    width: 20%;
 }
 
 .nav-row {
@@ -83,7 +80,7 @@ p {
   }
 
 .event-btn:hover, .movie-btn:hover, .btn:hover {
-    color: black;
+    color: var(--secondary);
     background-color: var(--primary);
     transform: translate(0, 0);
     box-shadow: 2px 2px var(--primary);
@@ -96,18 +93,29 @@ p {
     justify-content: space-around;
     margin-top: 50px; 
     margin: 80px auto;
-    width: 94%;
+    width: 90%;
+    background-color: rgb(277, 277, 277,0.5); 
+
+  }
+
+ .container-desc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
 .form-container {
-    background-color: black;
+    
+    background-color: var(--secondary);
     border-radius: 5px;
     opacity: 5px;
     color: var(--sixth);
     box-shadow: 3px 3px var(--primary);
-    width: 30%;
+    width: 60%;
     text-align: center;
   }
+
+ 
 
   .city-input, .type-input, .movie-input, .movietype-input{
     padding: 12px 30px;
@@ -133,7 +141,7 @@ p {
     border: none;
     outline: none;
     background-color: black;
-    box-shadow: 0px 0px 1px 1px var(--seventh);
+    box-shadow: 0px 0px 1px 1px var(--fifth);
   }
 
   h3 {
@@ -144,20 +152,18 @@ p {
   }
 
   .center {
-    font-size: 30px;
+    font-size: 40px;
     text-align: center;
-    width: 80%;
-    margin: 120px auto;
-    color: black;
-    text-shadow: 5px white;
-    
+    color: var(--secondary);
+    text-shadow: 0 0 10px var(--primary);   
+    margin:50px;
   }
  
 /*cards event and movie style */
 
 h2 {
     font-size: 50px;
-    color: #f9fbfd;
+    color: var(--fifth);
     text-align: space-around;  
     margin-left: 10%; 
   }
@@ -181,21 +187,26 @@ h2 {
   .cards{
     display: inline;
     position: relative;
-    background-color: black;
+    background-color: var(--secondary);
     opacity: 5px;
-    color: #b10084;
+    color: var(--thirdth);
     justify-content: center;
     width: 25%;
     height: 10%;
     margin: 5px;
     text-align: center;
+
   }
   
   .cards h3 {
-    color: #f9fbfd;
+    color: var(--fifth);
     height: 100px;
     justify-content: center;
     margin: 15px auto;
+  }
+
+  .cards h4{
+    font-size: 1.5rem;
   }
   
   .cards img {
@@ -205,29 +216,49 @@ h2 {
     display:none;
   }
 
+  
+/*media query for smaller desktop screensand smaller*/
 
- 
- /*
-  .card{
-    background-color: var(--eighth);
-    border-radius: 10px;
-    opacity: 5px;
-    color: #b10084;
-    box-shadow: 3px 3px black;
-    width: 20%;
-    text-align: center;
-
+@media screen and (max-width: 980px) {
+  header nav{
+    padding-bottom: 0;
+    justify-content: center;
   }
 
+ main {
+  margin-top: 20px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+ }
+
+ .form-container{
+width: 100%;
+ }
+
+ .cards{
+   width: 40%;
+ }
+
+ .center{
+   font-size: 30px;
+ }
+
+ /*media query for tablets and smaller*/
+
+ @media screen and (max-width: 768px) {
    
- 
+  .cards{
+    width: 90%;
+  }
+  .cards img {
+    width: 80%;
+   }
 
-/*
-  h4 {
-    font-size: 16px;
-  }*/
-
-
-
- 
-  
+   @media screen and (max-width: 575px) {
+   .center{
+     font-size: 25px;
+   }
+  }
+  }
+}
