@@ -17,6 +17,7 @@ var movieTypeEl = document.querySelector(".movietype-input");//Id to get text in
 //JS header for recommendations
 var featuredmovEl = document.querySelector("#mov-subtitle");//Id to get text input (type)
 var featuredevEl = document.querySelector("#ev-subtitle");//Id to get text input (type)
+var loadbtnEl =document.querySelector(".more-items"); //yo
 
 
 
@@ -52,6 +53,7 @@ function displayevents(cityChosen,typeChosen) {
   var picCont = document.createElement("a");
   var cardEl = document.createElement("div");
   featuredmovEl.classList.add("hidden")
+  //loadbtnEl.classList.add("hidden") //yo
 
 featuredevEl.classList.remove("hidden")
   
@@ -77,11 +79,9 @@ var eventSubmit = function(event) {
     var cityChosen = searchTextEl.value.trim();
     var typeChosen = searchTypeEl.value.trim();
   displayevents(cityChosen,typeChosen);
-  /*;*/
   document.querySelector("select[name='task-type']").selectedIndex = 0;
     searchTextEl.value = "";
     cardsContEl.textContent = ""; 
- 
   
   }
 
@@ -96,8 +96,7 @@ bodyContEl.classList.add("moviealt")
 featuredevEl.classList.add("hidden")
 cardsContEl.textContent = ""; 
 
-
-    }
+}
 
     if (eventType === "event-btn") {
         eventContEl.classList.remove("hidden")
@@ -107,6 +106,8 @@ cardsContEl.textContent = "";
         bodyContEl.classList.remove("moviealt")
 featuredmovEl.classList.add("hidden")
 cardsContEl.textContent = ""; 
+loadbtnEl.classList.add("hidden")//yo
+
 
 
     }
@@ -118,10 +119,10 @@ cardsContEl.textContent = "";
     var typemChosen = movieTypeEl.value.trim();
     //console.log(typemChosen,movieChosen)
   getSecApi(typemChosen,movieChosen);
+  cardsContEl.textContent = ""; 
  
   document.querySelector("select[name='movie-type']").selectedIndex = 0;
   document.querySelector("select[name='movies-type']").selectedIndex = 0;
-    cardsContEl.textContent = ""; 
   }
 
                                          
@@ -172,15 +173,15 @@ function displayMovieResult(movieId) {
       var plot = document.createElement("h4");
       var poster = document.createElement("img");
       var cardEl = document.createElement("div");
-  
       cardEl.classList.add("cards")
       featuredevEl.classList.add("hidden")
     featuredmovEl.classList.remove("hidden")
+    loadbtnEl.classList.remove("hidden")
 
       poster.src =moviePoster;
       title.textContent = movieTitle;
       year.textContent = movieYear;
-      time.textContent = "Run Time: " + movieRunTime + "minutes";
+      time.textContent = "Run Time: " + movieRunTime + " minutes";
       plot.textContent = moviePlot;
      
       cardsContEl.append(cardEl)
@@ -189,9 +190,18 @@ cardEl.append(poster,title,year,time,plot)
 
   })
 }
+
+var prepareScreen = function(typemChosen,movieChosen){
+  cardsContEl.textContent = ""; 
+  getSecApi(typemChosen,movieChosen);
+
+}
+
 //calls getMovValue funcion 
 searchMovEl.addEventListener("submit", getMovValue);
 //calls eventSubmit function
 searchBtnEl.addEventListener("submit", eventSubmit);
 //switches between movies/events app
 switchBtnEl.addEventListener("click", switchf);
+//loads more movies
+loadbtnEl.addEventListener("click", prepareScreen);
