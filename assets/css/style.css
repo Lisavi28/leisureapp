@@ -244,7 +244,7 @@ h2 {
     margin-top: auto;
   }
 
-/*media query for smaller desktop screensand smaller*/
+/*media query for medium desktop*/
 
 @media screen and (max-width: 1600px) {
   .center{
@@ -292,6 +292,7 @@ width: 100%;
   .cards img {
     width: 80%;
    }
+/* media query for mobile phones and smaller*/
 
    @media screen and (max-width: 575px) {
    .center{

@@ -1,16 +1,17 @@
 # Leisureapp
-Entertainment website 
+This is an entertainment website. The main purpose of this website is to provide users with events and movies options so they can reduce the time they spend looking for attractions. It is build based on web APIs that look for options based on your criteria.
+
 
 ## User story
 
 As a person who enjoys living new and gratifying experiences. I want to find events and festivals near me. So that I can better spend my free time.
 
-Although sometimes I also enjoy watching a good movie in the comfort of home, I would like to know about like to recomendation.
-
-Given an interactive application When I enter my location Then I am presented with a menu with types of activities, current and future events When I select an activity Then they introduce me and the place, time and price. When sometimes I seek to enjoy my free time at home given an app with form inputs allows me to search for movies then I am presented with different genres of movies to choose from giving me the platform where I can enjoy it.
+Although sometimes I also enjoy watching a good movie in the comfort of my home, I would like to have some recommendations for movies.
 
 
-### Build with
+
+
+### Built with
 
 *HTML *CSS *JS
 
@@ -34,3 +35,14 @@ https://fonts.googleapis.com/icon?family=Material+Icons
 
 https://pixabay.com/es/photos/audiencia-banda-concierto-multitud-1853662/
 https://pixabay.com/es/photos/muchachas-amigos-pel%c3%adcula-teatro-5775077/
+
+## Website
+
+https://lisavi28.github.io/leisureapp/
+
+## Contribution
+
+Made by [Edgar Nava and Yazmín Sánchez]
+
+
+
