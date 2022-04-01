@@ -7,10 +7,7 @@ This is an entertainment website. The main purpose of this website is to provide
 As a person who enjoys living new and gratifying experiences. I want to find events and festivals near me. So that I can better spend my free time.
 
 Although sometimes I also enjoy watching a good movie in the comfort of my home, I would like to have some recommendations for movies.
-
-
-
-
+cd .
 ### Built with
 
 *HTML *CSS *JS
@@ -44,5 +41,9 @@ https://lisavi28.github.io/leisureapp/
 
 Made by [Edgar Nava and Yazmín Sánchez]
 
+![Leisure1](https://github.com/Lisavi28/leisureapp/blob/main/assets/images/Leisure1.PNG)
+
+![Leisure2](https://github.com/Lisavi28/leisureapp/blob/main/assets/images/Leisure2.PNG)
 
 
+### ©️2022 Leisure App.
